@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "name": "UTC seconds CLI",
+  "inputs": [
+    "factory.recipe.json",
+    "utc_delta.py",
+    "tests/**/*.py",
+    ".fleet/*.ps1",
+    ".github/**/*.yml",
+    ".github/**/*.md",
+    ".cursor/**/*.md",
+    "*.md",
+    "LICENSE",
+    ".gitignore",
+    "release-check.json"
+  ],
+  "checks": [
+    {
+      "id": "sample",
+      "argv": [
+        "python3",
+        "-B",
+        "utc_delta.py",
+        "2026-10-27T00:00:00Z",
+        "2026-10-27T00:01:05Z"
+      ],
+      "required": true
+    },
+    {
+      "id": "cli-tests",
+      "argv": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "required": true
+    }
+  ]
+}

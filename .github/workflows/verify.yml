@@ -1,0 +1,14 @@
+name: verify
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: [self-hosted, "${{ vars.FLEET_WINDOWS_RUNNER }}"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run CLI tests
+        shell: powershell
+        run: ./.fleet/verify.ps1
