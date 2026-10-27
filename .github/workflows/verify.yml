@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run CLI tests
-        shell: powershell
-        run: ./.fleet/verify.ps1
+        shell: cmd
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File .fleet/verify.ps1
